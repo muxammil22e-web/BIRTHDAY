@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3, #c471ed);
+      color: white;
+      text-align: center;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 500px;
+      padding: 40px 25px;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      animation: appear 1.2s ease;
+      z-index: 2;
+    }
+
+    .cake {
+      font-size: 65px;
+      animation: bounce 1.5s infinite;
+    }
+
+    h1 {
+      font-size: clamp(30px, 7vw, 43px);
+      margin: 20px 0;
+      text-shadow: 0 3px 10px #e84393;
+    }
+
+    .message {
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 14px 25px;
+      border: none;
+      border-radius: 30px;
+      background: white;
+      color: #e84393;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 5px 20px #ffb6d5;
+    }
+
+    #surprise {
+      display: none;
+      margin-top: 25px;
+      font-size: 17px;
+      line-height: 1.8;
+      animation: appear 1s ease;
+    }
+
+    .signature {
+      margin-top: 28px;
+      font-size: 20px;
+      font-style: italic;
+      color: #fff3f8;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      animation: floatUp linear forwards;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <div class="cake">🎂</div>
+
+    <h1>Happy Birthday! ❤️</h1>
+
+    <div class="message">
+      Today is a special day because someone
+      truly special was born. 🎉💖
+      <br><br>
+      May your life always be filled with
+      happiness, love, laughter, and beautiful
+      memories. May all your dreams come true
+      and may you always keep smiling. 🌸✨
+    </div>
+
+    <button onclick="showSurprise()">
+      Open Your Surprise 💌
+    </button>
+
+    <div id="surprise">
+      You deserve all the happiness in the world! 🥹❤️
+      <br>
+      Keep smiling, keep shining, and never forget
+      how special you are. 💕
+      <br><br>
+      <strong>Happy Birthday Once Again! 🎂🎁</strong>
+    </div>
+
+    <div class="signature">
+      With love,<br>
+      From Muxammil ❤️
+    </div>
+  </div>
+
+  <script>
+    function showSurprise() {
+      document.getElementById("surprise").style.display = "block";
+      createHearts(35);
+    }
+
+    function createHearts(count = 1) {
+      for (let i = 0; i < count; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.textContent = ["❤️", "💕", "💖", "💗", "✨"][
+          Math.floor(Math.random() * 5)
+        ];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (16 + Math.random() * 25) + "px";
+
+        const duration = 3 + Math.random() * 4;
+        heart.style.animationDuration = duration + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), duration * 1000);
+      }
+    }
+
+    setInterval(() => createHearts(2), 700);
+  </script>
+
+</body>
+</html>
